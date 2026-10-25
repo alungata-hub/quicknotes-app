@@ -5,6 +5,8 @@ const noteCategory = document.querySelector("#note-category");
 const noteCount = document.querySelector("#note-count");
 const notesList = document.querySelector("#notes-list");
 
+const errorMessage = document.querySelector("#error-message");
+
 // 2. Store notes in an array
 let notes = [];
 
@@ -72,16 +74,39 @@ function render() {
   }
 }
 
-// 4. Handle form submission
+// Delete a note using its unique ID
+function deleteNote(id) {
+  notes = notes.filter((note) => note.id !== id);
+  render();
+}
+
+// Handle form submission and validate the note
 noteForm.addEventListener("submit", (event) => {
-  // Stop the form from reloading the page
+  // Prevent the browser from reloading the page
   event.preventDefault();
 
-  // Read the input and selected category
-  const text = noteInput.value.trim();
+  // Read the original text and remove surrounding spaces
+  const rawText = noteInput.value;
+  const text = rawText.trim();
   const category = noteCategory.value;
 
-  // Create a new note object
+  // Check whether the note is empty
+  if (text === "") {
+    errorMessage.textContent = "Please type a note first.";
+    return;
+  }
+
+  // Check whether the original input exceeds 200 characters
+  if (rawText.length > 200) {
+    errorMessage.textContent =
+      "Notes must be 200 characters or fewer.";
+    return;
+  }
+
+  // Clear any previous error when the input is valid
+  errorMessage.textContent = "";
+
+  // Create the new note object
   const newNote = {
     id: Date.now(),
     text: text,
@@ -89,16 +114,22 @@ noteForm.addEventListener("submit", (event) => {
     createdAt: new Date().toLocaleString()
   };
 
-  // Add the note to the array
+  // Add the note and refresh the list
   notes.push(newNote);
-
-  // Rebuild the visible list
   render();
 
-  // Clear the input for the next note
+  // Prepare the input for another note
   noteInput.value = "";
   noteInput.focus();
 });
 
 // Display the initial state
 render();
+
+// Handle clicks on Delete buttons inside the notes list
+notesList.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-btn")) {
+    const noteId = Number(event.target.dataset.noteId);
+    deleteNote(noteId);
+  }
+});
