@@ -22,23 +22,27 @@
         <h2>Add a note</h2>
 
         <form id="note-form">
-          <label for="note-input">Note text</label>
-          <input
-            type="text"
-            id="note-input"
-            placeholder="Type your note..."
-            autocomplete="off"
-          />
+  <div class="form-group">
+    <label for="note-input">Note text</label>
+    <input
+      type="text"
+      id="note-input"
+      placeholder="Type your note..."
+      autocomplete="off"
+    />
+  </div>
 
-          <label for="note-category">Category</label>
-          <select id="note-category">
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="study">Study</option>
-          </select>
+  <div class="form-group">
+    <label for="note-category">Category</label>
+    <select id="note-category">
+      <option value="personal">Personal</option>
+      <option value="work">Work</option>
+      <option value="study">Study</option>
+    </select>
+  </div>
 
-          <button type="submit">Add Note</button>
-        </form>
+  <button type="submit">Add Note</button>
+</form>
 
         <p id="error-message" role="alert" aria-live="polite"></p>
       </section>

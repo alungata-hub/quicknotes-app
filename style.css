@@ -1,0 +1,263 @@
+/* 1. Box-sizing reset */
+* {
+  box-sizing: border-box;
+}
+
+/* 2. Main page styling */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #f4f4f9;
+  color: #333333;
+}
+
+/* 3. Header */
+header {
+  background-color: #2c3e50;
+  color: #ffffff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 0;
+}
+
+/* 4. Main content */
+main {
+  max-width: 700px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* 5. Section cards */
+section {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e8;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+/* 6. Form layout using Flexbox */
+#note-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex: 1 1 200px;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+label {
+  font-weight: 600;
+}
+
+/* 7. Form controls and search input */
+input,
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #333333;
+  font: inherit;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2c3e50;
+  box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.15);
+}
+
+#search-input {
+  margin-bottom: 1rem;
+}
+
+/* 8. Buttons */
+button {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #2c3e50;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #34495e;
+}
+
+button:focus-visible {
+  outline: 3px solid #6096ba;
+  outline-offset: 2px;
+}
+
+/* 9. Validation error */
+#error-message {
+  color: #b91c1c;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+#error-message:empty {
+  display: none;
+}
+
+/* 10. Note count */
+#note-count {
+  margin-bottom: 1rem;
+  color: #555555;
+}
+
+/* 11. Notes list */
+#notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 12. Individual note cards */
+.note-card {
+  background-color: #fafafa;
+  padding: 1rem;
+  border: 1px solid #dddddd;
+  border-left: 5px solid #888888;
+  border-radius: 8px;
+  margin: 0 0 1rem;
+  overflow-wrap: anywhere;
+}
+
+.note-text {
+  margin: 0 0 0.75rem;
+  white-space: pre-wrap;
+}
+
+/* 13. Category-specific card borders */
+.category-personal {
+  border-left-color: #008080;
+}
+
+.category-work {
+  border-left-color: #8b0000;
+}
+
+.category-study {
+  border-left-color: #2563eb;
+}
+
+/* 14. Note details */
+.note-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #666666;
+  font-size: 0.875rem;
+}
+
+.category-label {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  background-color: #eeeeee;
+  color: #333333;
+  font-weight: 600;
+}
+
+.category-label.category-personal {
+  background-color: #d1f0ed;
+  color: #005b58;
+}
+
+.category-label.category-work {
+  background-color: #f5dada;
+  color: #7f1d1d;
+}
+
+.category-label.category-study {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* 15. Delete button on a note */
+.delete-btn {
+  background-color: #991b1b;
+}
+
+.delete-btn:hover {
+  background-color: #7f1d1d;
+}
+
+/* 16. Empty search results */
+.empty-state {
+  padding: 1rem;
+  color: #666666;
+  text-align: center;
+}
+
+/* 17. Footer */
+footer {
+  padding: 1rem;
+  text-align: center;
+  color: #666666;
+}
+
+/* 18. Responsive layout */
+@media (max-width: 600px) {
+  header {
+    padding: 1.5rem 1rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  main {
+    margin: 1rem auto;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  #note-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-group {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  #note-form button {
+    width: 100%;
+  }
+}
